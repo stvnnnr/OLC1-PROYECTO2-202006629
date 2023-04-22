@@ -1,0 +1,36 @@
+<br><br>
+<div style="margin: auto; width: 95%;">
+    <div class="input-group mb-3">
+        <input type="file" class="form-control-sm" id="fileee" name="fileee" aria-describedby="fileee2" accept=".cst"
+            (change)="CargaArchivo($event)">
+
+    </div>
+    <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="this.CrearArchivo()">Crear
+            Archivo</button>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+            (click)="this.GuardarArchivo()">Guardar Archivo</button>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="this.Escaneando()">Analizar
+            Entrada</button>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+            (click)="this.LimpiarConsola()">Limpiar Entrada</button>
+    </div>
+</div>
+
+
+<br>
+<h3 style="width: 20%;">Entrada</h3>
+<div class="input-group">
+    <textarea class="form-control" id="entradaa" aria-label="With textarea"
+        style="background-color: LightSlateGray;color: white; height: 20rem;font-family:Verdana, Geneva, Tahoma, sans-serif;"
+        [(ngModel)]="this.contenido" [ngModelOptions]="{standalone: true}"></textarea>
+</div>
+
+<br><br>
+<h3 style="width: 20%;">Consola</h3>
+<div class="input-group">
+    <textarea class="form-control" aria-label="With textarea" id="consolaa"
+        style="background-color: DimGray;color: white; height: 20rem; font-family:Verdana, Geneva, Tahoma, sans-serif;"
+        readonly [(ngModel)]="this.cuerpo.console" [ngModelOptions]="{standalone: true}"></textarea>
+</div>
+<br><br>

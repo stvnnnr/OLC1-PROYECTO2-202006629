@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+<br><br>
+<div class="card" style="width: 65rem; margin:0 auto; float: none; margin-bottom: 10px;">
+    <div class="card-body text-center" style="border-radius: 20px;">
+
+        <div class="text-center">
+            <br>
+            <h3>Reporte de Errores</h3>
+            <br>
+            <br>
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Linea</th>
+                        <th scope="col">Columna</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let info of errors; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{info.tipoError}}</td>
+                        <td>{{info.desc}}</td>
+                        <td>{{info.fila}}</td>
+                        <td>{{info.col}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

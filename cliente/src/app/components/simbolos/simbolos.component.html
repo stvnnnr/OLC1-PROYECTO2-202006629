@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+<br><br>
+<div class="card" style="width: 65rem; margin:0 auto; float: none; margin-bottom: 10px;">
+    <div class="card-body text-center" style="border-radius: 20px;">
+
+        <div class="text-center">
+            <br>
+            <h3>Tabla de Simbolos</h3>
+            <br>
+            <br>
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Identificador</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Entorno</th>
+                        <th scope="col">Linea</th>
+                        <th scope="col">Columna</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of simbols">
+                        <td>{{i.id}}</td>
+                        <td>{{i.tipo}}</td>
+                        <td>{{i.entorno}}</td>
+                        <td>{{i.linea}}</td>
+                        <td>{{i.col}}</td>
+                        <td>{{i.valor}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
