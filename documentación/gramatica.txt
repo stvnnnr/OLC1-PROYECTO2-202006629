@@ -1,0 +1,379 @@
+EXPRESIONES REGULARES:
+        TOKENS              EXPRESION REGULARES
+
+        INT                 int
+        DOUBLE              double
+        BOOL                boolean
+        CHAR                char
+        STRING              string
+        NEW                 new
+        IF                  if
+        ELSE                else
+        SWITCH              switch
+        CASE                case
+        BREAK               break
+        DEFAULT             default
+        WHILE               while
+        FOR                 for
+        DO                  do
+        CONTINUE            continue
+        RETURN              return
+        PRINT               print
+        PRINTLN             println
+        TOLOWER             tolower
+        TOUPPER             toupper
+        ROUND               round
+        LENGTH              length
+        TYPEOF              typeof
+        TOSTRING            tostring
+        TOCHARARRAY         tochararray
+        RUN                 main
+        NULL                null
+        TRUE                true
+        FALSE               false
+        VOID                void
+        COMENTARIO          (\/\/.*[^\n])
+        COMENTARIO          (\/\*([^*/]|[^*]\/|\*[^/])*\*\/)
+        EQUALS              ==
+        NOTEQUAL            !=
+        MENOREQ             <=
+        MAYOREQ             >=
+        OR                  ||
+        AND                 &&
+        INCREMENT           ++
+        DECREMENT           --
+        DIV                 /
+        POW                 ^
+        MOD                 %
+        IGUAL               =
+        NOT                 !
+        MENOR               <
+        MAYOR               >
+        TERNARIO            ?
+        PAR1                (
+        PAR2                )
+        LLAVE1              {
+        LLAVE2              }
+        COR1                [
+        COR2                ]
+        DOSPUNTOS           :
+        PUNTOCOMA           ;
+        COMENTARIO          ,
+        MAS                 +
+        MENOS               -
+        MULT                *
+        ID                  [a-z][a-z0-9_]*
+        DECIMAL             [0-9]+"."[0-9]+
+        ENTERO              [0-9]+
+        CARACTER            [\']([^\t\'\"\n]|(\\\")|(\\n)|(\\\')|(\\t)|(\\\\))?[\'] 
+        CADENA              [\"]((\\\")|[^\"\n])*[\"]
+        ESPACIOS            [\ \r\t\f\t]
+        ESPACIOS            [\ \n]
+        EOF                 EOF
+
+TERMINALES:
+        INT
+        DOUBLE
+        BOOL
+        CHAR
+        STRING
+        NEW
+        IF
+        ELSE
+        SWITCH
+        CASE
+        BREAK
+        DEFAULT
+        WHILE
+        FOR
+        DO
+        CONTINUE
+        RETURN
+        PRINT
+        PRINTLN
+        TOLOWER
+        TOUPPER
+        ROUND
+        LENGTH
+        TYPEOF
+        TOSTRING
+        TOCHARARRAY
+        RUN
+        NULL
+        TRUE
+        FALSE
+        VOID
+        EQUALS
+        NOTEQUAL
+        MENOREQ
+        MAYOREQ
+        OR
+        AND
+        INCREMENT
+        DECREMENT
+        DIV
+        POW
+        MOD
+        IGUAL
+        NOT
+        MENOR
+        MAYOR
+        TERNARIO
+        PAR1
+        PAR2
+        LLAVE1
+        LLAVE2
+        COR1
+        COR2
+        DOSPUNTOS
+        PUNTOCOMA
+        COMENTARIO
+        MAS
+        MENOS
+        MULT
+        ID
+        DECIMAL
+        ENTERO
+        CARACTER 
+        CADENA
+        EOF
+
+NO TERMINALES:
+        INICIO
+        INSTRUCCIONES
+        INSTRUCCION
+        DECLARACION                       
+        ASI                               
+        VEC                               
+        MVEC                              
+        INCREMENTO                        
+        DECREMENTO                        
+        SIF                               
+        SSWITCH                           
+        CWHILE                            
+        CFOR                              
+        CDOW                              
+        TBREAK                            
+        TCONTINUE                         
+        TRETURN                           
+        FUNCS                             
+        METODS                            
+        LLAMADAINS                        
+        PRINTT                            
+        PRINTLNN                          
+        RUNN
+        EXP
+        TERNAR
+        TOLOW
+        TOUP                                  
+        ROUNDD                                
+        LENGTHH                               
+        TYPEOFF                               
+        TOSTRINGG
+        TIPOS
+        LISTD
+        DEC2 
+        ASI
+        LISTVEC 
+        LISTVEC2 
+        LISTCASE
+        SCASE
+        SDEF 
+        S_DEC_ASI
+        ACTUALIZACION
+        PARAMS 
+        LLAMADA 
+        PARAMSCALL 
+        LISTRUN
+
+INICIO DE LA GRAMATICA : INICIO
+
+DESCRIPCION DE LAS PRODUCCIONES:
+
+        INICIO : INSTRUCCIONES EOF
+
+        INSTRUCCIONES : INSTRUCCIONES INSTRUCCION 
+                        | INSTRUCCION 
+                        | error PUNTOCOMA,EOF
+
+        INSTRUCCION : DECLARACION                       
+                    | ASI                               
+                    | VEC                               
+                    | MVEC                              
+                    | INCREMENTO                        
+                    | DECREMENTO                        
+                    | SIF                               
+                    | SSWITCH                           
+                    | CWHILE                            
+                    | CFOR                              
+                    | CDOW                              
+                    | TBREAK                            
+                    | TCONTINUE                         
+                    | TRETURN                           
+                    | FUNCS                             
+                    | METODS                            
+                    | LLAMADAINS                        
+                    | PRINTT                            
+                    | PRINTLNN                          
+                    | RUNN                              
+
+        EXP : EXP MAS EXP
+            | EXP MENOS EXP  
+            | EXP MULT EXP
+            | EXP DIV EXP
+            | EXP POW EXP
+            | EXP MOD EXP
+            | MENOS EXP
+            | TERNAR                                
+            | EXP EQUALS EXP
+            | EXP NOTEQUAL EXP
+            | EXP MENOR EXP  
+            | EXP MENOREQ EXP
+            | EXP MAYOR EXP
+            | EXP MAYOREQ EXP
+            | EXP OR EXP
+            | EXP AND EXP
+            | EXP INCREMENT
+            | EXP DECREMENT
+            | NOT EXP
+            | PAR1 TIPOS PAR2 EXP
+            | PAR1 EXP PAR2
+            | ID COR1 EXP COR2 COR1 EXP COR2
+            | ID COR1 EXP COR2
+            | LLAMADA                               
+            | TOLOW                                 
+            | TOUP                                  
+            | ROUNDD                                
+            | LENGTHH                               
+            | TYPEOFF                               
+            | TOSTRINGG                             
+            | ENTERO
+            | DECIMAL
+            | TRUE
+            | FALSE
+            | CARACTER
+            | CADENA
+            | ID
+
+        TIPOS: INT
+            | DOUBLE
+            | BOOL
+            | CHAR
+            | STRING
+
+        DECLARACION : TIPOS LISTD DEC2
+
+        LISTD : LISTD COMA ID
+            | ID                    
+
+        DEC2 : PUNTOCOMA 
+            |   IGUAL EXP PUNTOCOMA
+
+        ASI : ID IGUAL EXP PUNTOCOMA
+                    
+        VEC : TIPOS ID COR1 COR2 IGUAL NEW TIPOS COR1 EXP COR2 PUNTOCOMA
+            | TIPOS ID COR1 COR2 IGUAL COR1 LISTVEC COR2 PUNTOCOMA
+            | TIPOS ID COR1 COR2 IGUAL TOCHARARRAYY PUNTOCOMA
+
+        LISTVEC : LISTVEC COMA EXP      
+                | EXP                   
+
+        LISTVEC2 : LISTVEC2 COMA COR1 LISTVEC COR2
+                | COR1 LISTVEC COR2
+
+        MVEC : ID COR1 EXP COR2 IGUAL EXP PUNTOCOMA
+
+        INCREMENTO: EXP INCREMENT PUNTOCOMA
+
+        DECREMENTO: EXP DECREMENT PUNTOCOMA
+
+        TERNAR : EXP TERNARIO EXP DOSPUNTOS EXP
+
+        SIF : IF PAR1 EXP PAR2 LLAVE1 INSTRUCCIONES LLAVE2 ELSE LLAVE1 INSTRUCCIONES LLAVE2
+            | IF PAR1 EXP PAR2 LLAVE1 INSTRUCCIONES LLAVE2 ELSE SIF
+            | IF PAR1 EXP PAR2 LLAVE1 INSTRUCCIONES LLAVE2
+
+        SSWITCH : SWITCH PAR1 EXP PAR2 LLAVE1 LISTCASE SDEF LLAVE2      
+                | SWITCH PAR1 EXP PAR2 LLAVE1 LISTCASE LLAVE2
+                | SWITCH PAR1 EXP PAR2 LLAVE1 SDEF LLAVE2
+
+        LISTCASE : LISTCASE SCASE
+                | SCASE                 
+
+        SCASE : CASE EXP DOSPUNTOS INSTRUCCIONES
+
+        SDEF : DEFAULT DOSPUNTOS INSTRUCCIONES
+
+        CWHILE : WHILE PAR1 EXP PAR2 LLAVE1 INSTRUCCIONES LLAVE2
+
+        CFOR : FOR PAR1 S_DEC_ASI EXP PUNTOCOMA ACTUALIZACION PAR2 LLAVE1 INSTRUCCIONES LLAVE2
+
+        S_DEC_ASI : DECLARACION         
+                | ASI                   
+
+        ACTUALIZACION : EXP INCREMENT       
+                    | EXP DECREMENT         
+                    | ID IGUAL EXP          
+
+        CDOW : DO LLAVE1 INSTRUCCIONES LLAVE2 WHILE PAR1 EXP PAR2 PUNTOCOMA
+
+        TBREAK : BREAK PUNTOCOMA
+
+        TCONTINUE : CONTINUE PUNTOCOMA
+
+        TRETURN : RETURN PUNTOCOMA
+                | RETURN EXP PUNTOCOMA
+
+        FUNCS : TIPOS ID PAR1 PARAMS PAR2 LLAVE1 INSTRUCCIONES LLAVE2
+            |   TIPOS ID PAR1 PAR2 LLAVE1 INSTRUCCIONES LLAVE2
+
+        PARAMS : PARAMS COMA TIPOS ID
+                | TIPOS ID
+                                                                          
+        METODS : VOID ID PAR1 PARAMS PAR2 LLAVE1 INSTRUCCIONES LLAVE2
+            |   VOID ID PAR1 PAR2 LLAVE1 INSTRUCCIONES LLAVE2
+
+        LLAMADAINS : ID PAR1 PARAMSCALL PAR2 PUNTOCOMA
+                | ID PAR1 PAR2 PUNTOCOMA
+
+        LLAMADA : ID PAR1 PARAMSCALL PAR2   
+                | ID PAR1 PAR2
+
+        PARAMSCALL : PARAMSCALL COMA EXP        
+                    | EXP                       
+
+        PRINTT : PRINT PAR1 EXP PAR2 PUNTOCOMA
+
+        PRINTLNN : PRINTLN PAR1 EXP PAR2 PUNTOCOMA
+
+        TOLOW : TOLOWER PAR1 EXP PAR2
+
+        TOUP : TOUPPER PAR1 EXP PAR2 
+
+        ROUNDD : ROUND PAR1 EXP PAR2 
+
+        LENGTHH : LENGTH PAR1 EXP PAR2
+
+        TYPEOFF : TYPEOF PAR1 EXP PAR2
+
+        TOSTRINGG : TOSTRING PAR1 EXP PAR2
+
+        TOCHARARRAYY : TOCHARARRAY PAR1 EXP PAR2
+        
+        RUNN : RUN ID PAR1 PAR2 PUNTOCOMA
+            | RUN ID PAR1 LISTRUN PAR2 PUNTOCOMA
+
+        LISTRUN : LISTRUN COMA EXP      
+                | EXP                   
+
+EXPLICACION ACCIONES SEMANTICAS PARA LA CREACION DEL ARBOL:
+        PARA LA CREACION DEL ARBOL SE REALIZO UTILIZANDO EL PATRON INTERPRETER EL CUAL NOS INDICA QUE ES NECESARIO CREAR UNA CLASE ABSTRACTA
+        LA CUAL POSEA UN METODO ABSTRACTO QUE NOS PERMITA EJECUTAR CUALQUIER CLASE QUE EXTIENDA DE ESTA.
+
+        PARA ESTO SE CREO LA CLASE ABSTRACTA INSTRUCCION Y POSTERIORMENTE SE FUERON CREANDO MAS CLASES QUE EXTIENDAN DE ESTA. UNA CLASE POR
+        CADA INSTRUCCION O SENTENCIA A EJECUTAR Y EN CADA UNA DE ESTAS SE UTILIZA DICHO METODO PARA PODER EJECUTARLAS.
+
+        PARA MANEJAR LOS ERRORES SE CREO UNA CLASE DE ERRORES. AL ENCONTRAR ALGUN ERROR EN LAS VALIDACIONES DE CADA CLASE SE RETORNA UNA 
+        INSTANCIA DE ESTA CLASE LA CUAL PERMITE VERIFICAR EN QUE SENTENCIAS SE ENCUENTRA EL ERROR.
+
+        AL TERMINAR EL ANALISIS SINTACTICO CON JISON SE RETORNA UN ARREGLO DE INSTRUCCIONES Y DE ESTE SE REALIZA EL ANALISIS SEMANTICO.
