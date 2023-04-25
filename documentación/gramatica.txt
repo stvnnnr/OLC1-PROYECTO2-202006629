@@ -23,6 +23,7 @@ EXPRESIONES REGULARES:
         TOLOWER             tolower
         TOUPPER             toupper
         ROUND               round
+	TRUNCATE	    truncate
         LENGTH              length
         TYPEOF              typeof
         TOSTRING            tostring
@@ -94,6 +95,7 @@ TERMINALES:
         TOLOWER
         TOUPPER
         ROUND
+	TRUNCATE	    
         LENGTH
         TYPEOF
         TOSTRING
@@ -166,7 +168,8 @@ NO TERMINALES:
         TERNAR
         TOLOW
         TOUP                                  
-        ROUNDD                                
+        ROUNDD 
+	TRUNCATEE                               
         LENGTHH                               
         TYPEOFF                               
         TOSTRINGG
@@ -243,7 +246,8 @@ DESCRIPCION DE LAS PRODUCCIONES:
             | LLAMADA                               
             | TOLOW                                 
             | TOUP                                  
-            | ROUNDD                                
+            | ROUNDD    
+	    | TRUNCATEE                            
             | LENGTHH                               
             | TYPEOFF                               
             | TOSTRINGG                             
@@ -351,6 +355,8 @@ DESCRIPCION DE LAS PRODUCCIONES:
         TOUP : TOUPPER PAR1 EXP PAR2 
 
         ROUNDD : ROUND PAR1 EXP PAR2 
+	
+	TRUNCATEE : TRUNCATEE PAR1 EXP PAR2 	    
 
         LENGTHH : LENGTH PAR1 EXP PAR2
 
