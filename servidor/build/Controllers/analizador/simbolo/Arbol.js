@@ -23,7 +23,7 @@ class Arbol {
         this.consola = console;
     }
     Print(console) {
-        this.consola = `${this.consola}${console}`;
+        this.consola = `${this.consola}\n${console}`;
     }
     Println(console) {
         this.consola = `${this.consola}\n${console}`;

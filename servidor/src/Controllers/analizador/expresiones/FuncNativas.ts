@@ -35,6 +35,8 @@ export default class FuncNativas extends Instruccion {
                 return this.tolowerr(verificacion);
             case Funciones.TOUPPER:
                 return this.toUpperr(verificacion);
+            case Funciones.TRUNCATE:
+                return this.truncatee(verificacion);
             default:
                 return new Errores('Semantico', 'Funcion nativa no valida', this.linea, this.col);
 
@@ -61,7 +63,6 @@ export default class FuncNativas extends Instruccion {
     typeoff(verificacion: any) {
         this.tipoDato.setTipo(tipoDato.CADENA);
         if (typeof verificacion == "object") return "vector"
-
         switch (this.expresion.tipoDato.getTipo()) {
             case tipoDato.ENTERO:
                 return "int";
@@ -87,7 +88,6 @@ export default class FuncNativas extends Instruccion {
         if (this.expresion.tipoDato.getTipo() != tipoDato.DECIMAL) return new Errores('Semantico', 'Tipo de dato no valido para funcion round', this.linea, this.col);
         this.tipoDato.setTipo(tipoDato.ENTERO);
         return Math.round(verificacion);
-
     }
 
     tolowerr(verificacion: any) {
@@ -100,6 +100,12 @@ export default class FuncNativas extends Instruccion {
         if (this.expresion.tipoDato.getTipo() != tipoDato.CADENA) return new Errores('Semantico', 'Tipo de dato no valido para funcion toUpper', this.linea, this.col);
         this.tipoDato.setTipo(tipoDato.CADENA);
         return verificacion.toUpperCase();
+    }
+
+    truncatee(verificacion: any) {
+        if (this.expresion.tipoDato.getTipo() != tipoDato.DECIMAL) return new Errores('Semantico', 'Tipo de dato no valido para funcion truncate', this.linea, this.col);
+        this.tipoDato.setTipo(tipoDato.ENTERO);
+        return Math.trunc(verificacion);
     }
 
     generarDot(anterior: string) {
@@ -140,6 +146,10 @@ export default class FuncNativas extends Instruccion {
                 cadena += nodo1 + "[label=\"TOUP\"];\n";
                 cadena += nodo2 + "[label=\"toupper\"];\n";
                 break;
+            case Funciones.TRUNCATE:
+                cadena += nodo1 + "[label=\"TRUNC\"];\n";
+                cadena += nodo2 + "[label=\"truncate\"];\n";
+                break;
         }
         cadena += nodo3 + "[label=\"(\"];\n";
         cadena += nodo4 + "[label=\"EXP\"];\n";
@@ -163,5 +173,6 @@ export enum Funciones {
     LENGTH,
     ROUND,
     TOLOWER,
-    TOUPPER
+    TOUPPER,
+    TRUNCATE
 }

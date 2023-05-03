@@ -58,10 +58,10 @@ export class InicioComponent implements OnInit {
   GuardarArchivo() {
     const binaryData = [];
     binaryData.push(this.contenido);
-    const archivo = window.URL.createObjectURL(new Blob(binaryData, { type: 'archivo.cst' }))
+    const archivo = window.URL.createObjectURL(new Blob(binaryData, { type: 'archivo.tw' }))
     const descarga = document.createElement('a')
     descarga.href = archivo
-    descarga.setAttribute('download', 'archivo.cst')
+    descarga.setAttribute('download', 'archivo.tw')
     document.body.appendChild(descarga)
     descarga.click();
   }

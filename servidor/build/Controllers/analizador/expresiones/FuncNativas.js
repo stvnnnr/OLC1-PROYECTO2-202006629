@@ -56,6 +56,8 @@ class FuncNativas extends Instruccion_1.Instruccion {
                 return this.tolowerr(verificacion);
             case Funciones.TOUPPER:
                 return this.toUpperr(verificacion);
+            case Funciones.TRUNCATE:
+                return this.truncatee(verificacion);
             default:
                 return new Errores_1.default('Semantico', 'Funcion nativa no valida', this.linea, this.col);
         }
@@ -121,6 +123,12 @@ class FuncNativas extends Instruccion_1.Instruccion {
         this.tipoDato.setTipo(Tipo_1.tipoDato.CADENA);
         return verificacion.toUpperCase();
     }
+    truncatee(verificacion) {
+        if (this.expresion.tipoDato.getTipo() != Tipo_1.tipoDato.DECIMAL)
+            return new Errores_1.default('Semantico', 'Tipo de dato no valido para funcion truncate', this.linea, this.col);
+        this.tipoDato.setTipo(Tipo_1.tipoDato.ENTERO);
+        return Math.trunc(verificacion);
+    }
     generarDot(anterior) {
         let cadena = "";
         let nodo1 = "n" + (indexController_1.numeroNodo.no + 1);
@@ -158,6 +166,10 @@ class FuncNativas extends Instruccion_1.Instruccion {
                 cadena += nodo1 + "[label=\"TOUP\"];\n";
                 cadena += nodo2 + "[label=\"toupper\"];\n";
                 break;
+            case Funciones.TRUNCATE:
+                cadena += nodo1 + "[label=\"TRUNC\"];\n";
+                cadena += nodo2 + "[label=\"truncate\"];\n";
+                break;
         }
         cadena += nodo3 + "[label=\"(\"];\n";
         cadena += nodo4 + "[label=\"EXP\"];\n";
@@ -181,4 +193,5 @@ var Funciones;
     Funciones[Funciones["ROUND"] = 4] = "ROUND";
     Funciones[Funciones["TOLOWER"] = 5] = "TOLOWER";
     Funciones[Funciones["TOUPPER"] = 6] = "TOUPPER";
+    Funciones[Funciones["TRUNCATE"] = 7] = "TRUNCATE";
 })(Funciones = exports.Funciones || (exports.Funciones = {}));

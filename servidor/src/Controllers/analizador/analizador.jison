@@ -65,6 +65,7 @@ const Llamada=require('./instrucciones/Llamada')
 "tolower"           return 'TOLOWER';
 "toupper"           return 'TOUPPER';
 "round"             return 'ROUND';
+"truncate"          return 'TRUNCATE';
 "length"            return 'LENGTH';
 "typeof"            return 'TYPEOF';
 "tostring"          return 'TOSTRING';
@@ -207,6 +208,7 @@ EXP : EXP MAS EXP                           {$$=new Aritmeticas.default(Aritmeti
     | TOLOW                                 {$$=$1;}
     | TOUP                                  {$$=$1;}
     | ROUNDD                                {$$=$1;}
+    | TRUNCATEE                             {$$=$1;}
     | LENGTHH                               {$$=$1;}
     | TYPEOFF                               {$$=$1;}
     | TOSTRINGG                             {$$=$1;}
@@ -377,6 +379,10 @@ TOUP : TOUPPER PAR1 EXP PAR2                    {$$=new FuncNativas.default($3,F
 
  // round
 ROUNDD : ROUND PAR1 EXP PAR2                    {$$=new FuncNativas.default($3,FuncNativas.Funciones.ROUND,@1.first_line,@1.first_column);}
+;
+
+ // truncate
+TRUNCATEE : TRUNCATE PAR1 EXP PAR2                    {$$=new FuncNativas.default($3,FuncNativas.Funciones.TRUNCATE,@1.first_line,@1.first_column);}
 ;
 
 // length
